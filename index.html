@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agnese Navarro - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="diamond" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="10,2 18,10 10,18 2,10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23diamond)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 80px 0;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .about-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #34495e;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .project-duration {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .project-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .key-achievements {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .key-achievements h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .achievement-list {
+            list-style: none;
+        }
+
+        .achievement-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .achievement-list li::before {
+            content: '♦';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .certifications {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .languages {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .lang-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .tagline { font-size: 1.2em; }
+            nav ul { flex-direction: column; align-items: center; }
+            nav li { margin: 5px 0; }
+            .about-content, .project-content { padding: 25px; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Agnese Navarro</h1>
+                <p class="tagline">Client Advisor | Diamond Expert | Data Analyst</p>
+                <p class="contact-info">comicodex9@gmail.com</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Background</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    With over 10 years of dedicated experience in the international luxury retail sector, I bring a unique blend of expertise in diamonds, high-end jewelry, real estate development, and data analysis. My passion lies in understanding market dynamics, consumer behavior, and translating complex data into actionable business insights.
+                </p>
+                <p class="about-text">
+                    My journey has taken me from the precision world of diamond expertise to the analytical realm of data science, always maintaining a focus on delivering exceptional client experiences and driving business growth through informed decision-making.
+                </p>
+                
+                <div class="languages">
+                    <h3>Languages</h3>
+                    <div class="lang-grid">
+                        <div class="lang-item">
+                            <strong>Italian</strong><br>
+                            <small>Mother tongue</small>
+                        </div>
+                        <div class="lang-item">
+                            <strong>English</strong><br>
+                            <small>Fluent</small>
+                        </div>
+                        <div class="lang-item">
+                            <strong>Spanish</strong><br>
+                            <small>Intermediate</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Professional Background</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Data Analysis & Market Intelligence</h3>
+                        <p class="project-duration">2024 - Present | EPICODE</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Currently developing advanced analytical skills through comprehensive data analysis training, focusing on market research methodologies and consumer behavior analytics.
+                        </p>
+                        <div class="key-achievements">
+                            <h4>Key Focus Areas:</h4>
+                            <ul class="achievement-list">
+                                <li>Statistical analysis and data visualization</li>
+                                <li>Market trend identification and forecasting</li>
+                                <li>Consumer behavior pattern analysis</li>
+                                <li>Business intelligence reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">International Real Estate Development</h3>
+                        <p class="project-duration">2003 - 2025 | Freelance</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Led comprehensive real estate investment strategies across international markets, combining market analysis with strategic negotiation and budget management.
+                        </p>
+                        <div class="key-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul class="achievement-list">
+                                <li>Successfully managed multi-market investment portfolio</li>
+                                <li>Conducted in-depth market analysis for investment decisions</li>
+                                <li>Developed expertise in international property regulations</li>
+                                <li>Built network of international real estate professionals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Luxury Retail Management & Diamond Expertise</h3>
+                        <p class="project-duration">2014 - 2017 | Dalgleish Diamond Jewellers</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Served as Assistant Manager and Diamond Expert, providing specialized consultancy on custom diamonds and gemstones while serving as Thomas Sabo Brand Ambassador and organizing exclusive VIP Swarovski events.
+                        </p>
+                        <div class="key-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul class="achievement-list">
+                                <li>Expert consultation on custom diamond and gemstone pieces</li>
+                                <li>Thomas Sabo Brand Ambassador responsibilities</li>
+                                <li>Organized exclusive VIP Swarovski events</li>
+                                <li>Managed inventory and quality control processes</li>
+                                <li>Built lasting relationships with high-net-worth clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">International Luxury Brand Sales</h3>
+                        <p class="project-duration">2012 - 2014 | Michael Hill Jeweller</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Specialized in sales and customer relationship management for prestigious international brands including Pandora, Swarovski, Citizen, Thomas Sabo, and Omega, while developing comprehensive customer loyalty programs.
+                        </p>
+                        <div class="key-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul class="achievement-list">
+                                <li>Achieved significant increase in customer loyalty rates</li>
+                                <li>Mastered upselling and cross-selling techniques for premium brands</li>
+                                <li>Developed comprehensive customer education programs</li>
+                                <li>Managed returns, exchanges, and repairs efficiently</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Analysis & Research</h3>
+                    <ul>
+                        <li>Market analysis and forecasting</li>
+                        <li>Consumer behavior analytics</li>
+                        <li>Statistical analysis</li>
+                        <li>Business intelligence</li>
+                        <li>Data visualization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Luxury Retail Expertise</h3>
+                    <ul>
+                        <li>Diamond grading and evaluation</li>
+                        <li>High-end jewelry consultation</li>
+                        <li>Product knowledge management</li>
+                        <li>Inventory optimization</li>
+                        <li>Quality control systems</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Business Development</h3>
+                    <ul>
+                        <li>International market expansion</li>
+                        <li>Strategic planning</li>
+                        <li>Budget management</li>
+                        <li>Negotiation</li>
+                        <li>Risk assessment</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Client Relations</h3>
+                    <ul>
+                        <li>VIP client management</li>
+                        <li>Customer loyalty programs</li>
+                        <li>Public relations</li>
+                        <li>Event planning</li>
+                        <li>Cross-cultural communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications & Education</h2>
+            <div class="certifications">
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <h4>Data Analyst Certification</h4>
+                        <p>EPICODE | 2024-2025</p>
+                    </div>
+                    <div class="cert-item">
+                        <h4>Real Estate Diploma</h4>
+                        <p>Leone Master School | 2022-2023</p>
+                    </div>
+                    <div class="cert-item">
+                        <h4>Inside LVMH</h4>
+                        <p>LVMH Group | 2022</p>
+                    </div>
+                    <div class="cert-item">
+                        <h4>Business Studies Diploma</h4>
+                        <p>EIT New Zealand | 2014-2016</p>
+                    </div>
+                    <div class="cert-item">
+                        <h4>Certified Diamond Expert</h4>
+                        <p>Diamond Council of America | 2013</p>
+                    </div>
+                    <div class="cert-item">
+                        <h4>Sales Techniques for Jewellery</h4>
+                        <p>MHJ | 2012</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 20px;">Ready to Collaborate?</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">Let's discuss how my unique blend of luxury retail expertise, diamond knowledge, and data analysis skills can drive your business forward.</p>
+            <a href="mailto:comicodex9@gmail.com" class="cta-button">Get In Touch</a>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 Agnese Navarro. All rights reserved.</p>
+            <p>Email: comicodex9@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255,255,255,0.98)';
+            } else {
+                nav.style.background = 'rgba(255,255,255,0.95)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards and skill categories
+        document.querySelectorAll('.project-card, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
